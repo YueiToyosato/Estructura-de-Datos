@@ -1,0 +1,35 @@
+/*Yuei Toyosato*/
+
+#include <iostream>
+#include <math.h>
+using namespace std;
+int main()
+{
+    float a,b,c,dis;
+    cout<<"Introducir el valor de A"<<endl;
+    cin>>a;
+    cout<<"Introducir el valor de B"<<endl;
+    cin>>b;
+    cout<<"Introducir el valor de C"<<endl;
+    cin>>c;
+    det=sqrt((pow(b,2)-(4*a*c));
+    if (a==0)
+    {
+        cout<<"La ecuacion no tiene solucion"<<endl;
+    }
+    else if(dis==0)
+    {
+        cout<<"La solucion unica es: "<<(-b+dis)/(2*a)<<endl;
+    }
+    else if(dis>0)
+    {
+        cout<<"La 1er solucion real es: "<<(-b+dis)/(2*a)<<endl;
+        cout<<"La 2da solucion real es: "<<(-b-dis)/(2*a)<<endl;
+    }
+    else 
+    {
+        cout<<"La 1er solucion imaginaria es: "<<(-b/(2*a)<<" + "<<dis/(2*a)<<" i"<<endl;
+        cout<<"La 2da solucion imaginaria es: "<<(-b/(2*a)<<" - "<<dis/(2*a)<<" i"<<endl;
+    }
+    return 0;
+}
