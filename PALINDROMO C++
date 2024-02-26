@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+void palindromo(int num);
+int num;
+int main()
+{
+    cout << "Ingrese un numero entero positivo" << endl;
+    cin >> num,
+    palindromo(num);
+}
+
+void palindromo(int num)
+{
+    int dig, z = 0, org;
+    org = num;
+    while (num > 0)
+    {
+        dig = num % 10;
+        z = z * 10 + dig;
+        num = num / 10;
+    }
+    if (org==z)
+    {
+        cout << "El numero " << org << " y su inverso " << z << " son palindromos." << endl;
+    }
+    else
+    {
+        cout << "El numero " << org << " y su inverso " << z << " no son palindromos." << endl;
+    }
+}
