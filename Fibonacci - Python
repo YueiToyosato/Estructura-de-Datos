@@ -1,0 +1,15 @@
+def fibonacci(num):
+    fib=[0, 1]
+    if(num<=1):
+        return 1
+    else:
+        return fibonacci(num-1)+fibonacci(num-2)
+n=int(input("Ingrese la cantidad de terminos a mostrar de la secuencia: "))
+if(n<1):
+    print("Ingrese un valor positivo")
+else:
+    print("La serie es: ")
+    print("0")
+for i in range(n):
+    print(fibonacci(i))
+
