@@ -1,0 +1,10 @@
+class Rectangulo():
+    def _init_(self, base, altura):
+        self.base = base
+        self.altura = altura
+    def area(self):
+        return self.base*self.altura
+    
+base=float(input("Introducir la base: "))
+altura=float(input("Introducir la altura: "))
+print("El area es:", Rectangulo(base,altura).area())
