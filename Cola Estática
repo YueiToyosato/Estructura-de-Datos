@@ -134,7 +134,7 @@ int main()
             cout << "Opción no válida." << endl;
             break;
         }
-    } while (opcion != 5);
+    } while (op != 5);
 
     return 0;
 }
