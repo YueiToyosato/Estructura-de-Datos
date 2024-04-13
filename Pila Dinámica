@@ -1,0 +1,151 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Nodo {
+public:
+    int dato;
+    string nomb;
+    Nodo* sig;
+
+    // Constructor de Nodo
+    Nodo() {
+        dato = 0;
+        nomb = "";
+        sig = NULL;
+    }
+};
+
+class PilaD {
+private:
+    Nodo* tope;
+
+public:
+    PilaD() {
+        tope = NULL;
+    }
+
+    void push();
+    void pop();
+    void show();
+    void top();
+    void size();
+};
+
+void PilaD::push() {
+    int val;
+    string val2;
+    Nodo* aux = new Nodo;
+    cout << "Ingresa el id del proceso: ";
+    cin >> val;
+    cout << "Ingresa el nombre del proceso: ";
+    cin.ignore();
+    getline(cin, val2);
+    aux->dato = val;
+    aux->nomb = val2;
+    aux->sig = NULL;
+
+    if (aux != NULL) {
+        if (tope == NULL) {
+            tope = aux;
+        }
+        else {
+            aux->sig = tope;
+            tope = aux;
+        }
+        cout << "Nuevo proceso insertado en la pila!\n";
+    }
+}
+
+void PilaD::pop() {
+    if (tope == NULL) {
+        cout << "\nLa pila esta vacia!\n\n";
+        return;
+    }
+
+    Nodo* temp = tope;
+    tope = tope->sig;
+    cout << "\nEl proceso eliminado es: " << temp->dato << " - " << temp->nombre << "\n" << endl;
+    delete temp;
+}
+
+void PilaD::show() {
+    Nodo* aux1 = tope;
+    if (tope == NULL) {
+        cout << "\nLa pila esta vacia!\n\n";
+        return;
+    }
+
+    cout << "Procesos:\n" << endl;
+    while (aux1 != NULL) {
+        cout << aux1->dato << " - " << aux1->nombre << "\n" << endl;
+        aux1 = aux1->sig;
+    }
+}
+
+void PilaD::top() {
+    if (tope == NULL) {
+        cout << "\nLa pila esta vacia!\n\n";
+        return;
+    }
+
+    cout << "Proceso TOP:\n" << endl;
+    cout << tope->dato << " - " << tope->nomb << "\n" << endl;
+}
+
+void PilaD::size() {
+    if (tope == NULL) {
+        cout << "\nLa pila esta vacia!\n\n";
+        return;
+    }
+
+    int cont = 0;
+    Nodo* aux1 = tope;
+    while (aux1 != NULL) {
+        cont++;
+        aux1 = aux1->sig;
+    }
+
+    cout << "El tamano de la pila es: '" << cont << "'\n" << endl;
+}
+
+int main() {
+    PilaD pila1;
+    int opcion;
+    do {
+        cout << "[:]Pila en lista enlazada" << endl;
+        cout << "[1]Push" << endl;
+        cout << "[2]Pop" << endl;
+        cout << "[3]Mostrar" << endl;
+        cout << "[4]Top" << endl;
+        cout << "[5]Size" << endl;
+        cout << "[0]Salir" << endl;
+        cout << "\nIngresa tu opcion: ";
+        cin >> opcion;
+
+        switch (opcion) {
+        case 1:
+            pila1.push();
+            break;
+        case 2:
+            pila1.pop();
+            break;
+        case 3:
+            pila1.show();
+            break;
+        case 4:
+            pila1.top();
+            break;
+        case 5:
+            pila1.size();
+            break;
+        case 0:
+            return 0;
+        default:
+            cout << "Por favor ingresa una opcion correcta.\n";
+            break;
+        }
+    } while (opcion != 0);
+
+    return 0;
+}
