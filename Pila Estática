@@ -1,0 +1,141 @@
+#include <iostream>
+#define MAX 10
+using namespace std;
+
+class pilae {
+private:
+    int vect[MAX];
+    int top;
+
+public:
+    pilae();
+    void push(int &element);
+    void pop();
+    bool PilaVacia();
+    bool PilaLlena();
+    void VerPila();
+    void LimpiarPila();
+    bool Iguales(pila1 &pila2);
+};
+
+pilae::pilae() {
+    top= -1;
+}
+
+void pilae::push(int &element) {
+    if (PilaLlena()) {
+        cout << "La pila ha alcanzado su capacidad máxima." << endl;
+    } else {
+        tope++;
+        vect[top] = elemento;
+        cout << "Elemento " << elemento << " insertado en la pila." << endl;
+    }
+}
+
+bool pilae::PilaVacia() {
+    return tope == -1;
+}
+
+bool pilae::PilaLlena() {
+    return top == MAX - 1;
+}
+
+void pilae::pop() {
+    if (PilaVacia()) {
+        cout << "La pila está vacía. No se puede eliminar ningún elemento." << endl;
+    } else {
+        int eliminado = vect[top];
+        tope--;
+        cout << "Elemento " << eliminado << " eliminado de la pila." << endl;
+    }
+}
+
+void pilae::LimpiarPila() {
+    top = -1;
+    cout << "La pila ha sido limpiada." << endl;
+}
+
+void pilae::VerPiila() {
+    if (PilaVacia()) {
+        cout << "La pila está vacía." << endl;
+    } else {
+        cout << "Elementos de la pila:" << endl;
+        for (int i = tope; i >= 0; i--) {
+            cout << vector[i] << endl;
+        }
+    }
+}
+
+bool pilae::Iguales(pila1 &pila2) {
+    if (top != pila2.top) {
+        return false;
+    }
+    for (int i = 0; i <= top; i++) {
+        if (vect[i] != pila2.vect[i]) {
+            return false;
+        }
+    }
+    return true;
+}
+
+int main() {
+    int dato, n, op;
+    pilae pila1, pila2;
+    
+    cout << "MENU" << endl;
+    do {
+        cout << "[:]Pila en lista enlazada" << endl;
+        cout << "[1]Push en Pila " << endl;
+        cout << "[2]Pop en Pila " << endl;
+        cout << "[3]Mostrar Pila " << endl;
+        cout << "[4]Limpiar Pila " << endl;
+        cout << "[5]Iguales(se crea segunda pila)" << endl;
+        cout << "[0]Salir" << endl;
+        cout << "\nIngresa tu opción: ";
+        cin >> op;
+        
+        switch (op) {
+            case 1:
+                cout << "Cuantos elementos quieres introducir a la pila 1?: "; 
+                cin >> n;
+                do {
+                    cout << "Digite el elemento de la pila 1: "; 
+                    cin >> dato;
+                    pila1.push(dato);
+                    n--;
+                } while (n > 0);
+                break;
+            case 2:
+                pila1.pop();
+                break;
+            case 3:
+                pila1.VerPila();
+                break;
+            case 4:
+                pila1.LimpiarPila();
+                break;
+            case 5:
+                cout << "Cuantos elementos quieres introducir a la pila 2?: "; 
+                cin >> n;
+                do {
+                    cout << "Digite el elemento de la pila 2: "; 
+                    cin >> dato;
+                    pila2.push(dato);
+                    n--;
+                } while (n > 0);
+                if (pila1.Iguales(pila2)) {
+                    cout << "Las pilas son iguales." << endl;
+                } else {
+                    cout << "Las pilas no son iguales." << endl;
+                }
+                break;
+            case 0:
+                return 0;
+            default:
+                cout << "Por favor ingresa una opción correcta." << endl;
+                break;
+        }
+    } while (opcion != 0);
+    
+    return 0;
+}
