@@ -135,7 +135,7 @@ int main() {
                 cout << "Por favor ingresa una opción correcta." << endl;
                 break;
         }
-    } while (opcion != 0);
+    } while (op != 0);
     
     return 0;
 }
