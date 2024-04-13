@@ -1,0 +1,140 @@
+#include <iostream>
+
+#define MAX 50
+
+using namespace std;
+
+class ColaE
+{
+private:
+    int inf[MAX];
+    int start, end;
+
+public:
+    ColaE(void);
+    bool Encolar(int Valor);
+    bool Desencolar(void);
+    bool PrimeroenCola(int &Valor);
+    bool ColaVacia(void);
+    void mostrar(void);
+    void VaciarCola(void);
+};
+
+ColaE::ColaE(void)
+{
+   start = 0;
+    end = 0;
+}
+
+bool ColaE::ColaVacia(void)
+{
+    return start == end;
+}
+
+bool ColaE::Encolar(int Valor)
+{
+    if (end == MAX)
+    {
+        cout << "Error: La cola está llena." << endl;
+        return false;
+    }
+    else
+    {
+        inf[end] = Valor;
+        end++;
+        return true;
+    }
+}
+
+bool ColaE::PrimeroenCola(int &valor)
+{
+    if (ColaVacia())
+    {
+        cout << "Error: La cola está vacía." << endl;
+        return false;
+    }
+    else
+    {
+        valor = inf[start];
+        return true;
+    }
+}
+
+bool ColaE::Desencolar(void)
+{
+    if (ColaVacia())
+    {
+        cout << "Error: La cola está vacía." << endl;
+        return false;
+    }
+    else
+    {
+        start++;
+        return true;
+    }
+}
+
+void ColaE::mostrar()
+{
+    if (ColaVacia())
+    {
+        cout << "La cola está vacía." << endl;
+    }
+    else
+    {
+        cout << "Contenido de la cola:" << endl;
+        for (int i = start; i < end; i++)
+            cout << "[" << inf[i] << "] ";
+        cout << endl;
+    }
+}
+
+void ColaE::VaciarCola(void)
+{
+    start = 0;
+    end = 0;
+    cout << "La cola ha sido vaciada." << endl;
+}
+
+int main()
+{
+    ColaE cola1;
+    int op, valor;
+    do
+    {
+        cout << "Menú de opciones:" << endl;
+        cout << "1. Encolar" << endl;
+        cout << "2. Desencolar" << endl;
+        cout << "3. Mostrar cola" << endl;
+        cout << "4. Vaciar cola" << endl;
+        cout << "5. Salir" << endl;
+        cout << "Seleccione una opción: ";
+        cin >> op;
+        switch (op)
+        {
+        case 1:
+            int element;
+            cout << "Ingrese el valor a encolar: ";
+            cin >> element;
+            cola1.Encolar(element);
+            break;
+        case 2:
+            cola1.Desencolar();
+            break;
+        case 3:
+            cola1.mostrar();
+            break;
+        case 4:
+            cola1.VaciarCola();
+            break;
+        case 5:
+            cout << "Saliendo del programa." << endl;
+            break;
+        default:
+            cout << "Opción no válida." << endl;
+            break;
+        }
+    } while (opcion != 5);
+
+    return 0;
+}
